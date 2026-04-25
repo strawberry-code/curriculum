@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="{{HTML_LANG}}">
+<head>
+<meta charset="utf-8">
+<title>{{DOC_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --ink-mute: #6B6B6B;
+    --ink-ghost: #A6A6A6;
+    --accent: #D11A2A;
+    --rule: #E2E2E2;
+    --paper: #FFFFFF;
+    --f-display: 'Geist', system-ui, -apple-system, sans-serif;
+    --f-sans: 'Geist', system-ui, -apple-system, sans-serif;
+    --f-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+  }
+  @page { size: A4; margin: 14mm 16mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); }
+  body {
+    color: var(--ink);
+    font-family: var(--f-sans);
+    font-size: 9.5pt;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  strong { font-weight: 600; }
+  em { font-style: normal; font-weight: 500; }
+
+  .cv-header { margin-bottom: 14pt; }
+  .cv-name {
+    font-family: var(--f-display);
+    font-weight: 800;
+    font-size: 25pt;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 3pt;
+  }
+  .cv-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 8.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6pt;
+  }
+  .cv-tagline {
+    font-size: 9.7pt;
+    line-height: 1.45;
+    max-width: 145mm;
+    margin: 0 0 8pt;
+  }
+  .cv-contacts {
+    font-family: var(--f-mono);
+    font-size: 8pt;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3pt 12pt;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 6pt 0;
+  }
+  .cv-contacts a { color: var(--ink-mute); text-decoration: none; }
+  .cv-contacts .k { color: var(--ink-ghost); margin-right: 3pt; }
+
+  .cv-section { margin-top: 14pt; }
+  .cv-h2 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 8pt;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    display: inline-block;
+  }
+
+  .cv-profile-list { list-style: none; margin: 0; padding: 0; }
+  .cv-profile-list li {
+    position: relative;
+    padding-left: 11pt;
+    margin-bottom: 5pt;
+  }
+  .cv-profile-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5pt;
+    width: 5pt;
+    height: 1.5pt;
+    background: var(--accent);
+  }
+
+  .cv-agentic-intro { margin: 0 0 7pt; font-size: 9.3pt; }
+  .cv-agentic-grid { display: flex; flex-direction: column; gap: 4pt; }
+  .cv-agentic-item { break-inside: avoid; }
+  .cv-agentic-tag {
+    font-family: var(--f-mono);
+    font-size: 7.4pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-ghost);
+  }
+  .cv-agentic-name { font-family: var(--f-display); font-weight: 600; font-size: 9.6pt; }
+  .cv-agentic-desc { font-size: 9.2pt; color: var(--ink-mute); }
+
+  .cv-exp-list { display: flex; flex-direction: column; gap: 9pt; }
+  .cv-exp { break-inside: avoid; }
+  .cv-exp-meta {
+    font-family: var(--f-mono);
+    font-size: 8pt;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2pt;
+  }
+  .cv-exp-meta .cv-exp-when.current {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .cv-exp-title {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0 0 2pt;
+  }
+  .cv-exp-title .org { color: var(--accent); }
+  .cv-exp-title .at { color: var(--ink-mute); font-weight: 500; }
+  .cv-exp-desc { margin: 0 0 3pt; font-size: 9.3pt; }
+  .cv-exp-tags {
+    font-family: var(--f-mono);
+    font-size: 7.6pt;
+    color: var(--ink-ghost);
+    margin: 0;
+  }
+
+  .cv-stack { display: flex; flex-direction: column; gap: 8pt; }
+  .cv-stack-cat-title {
+    font-family: var(--f-mono);
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin: 0 0 4pt;
+    font-weight: 500;
+  }
+  .cv-stack-item { margin-bottom: 2pt; font-size: 9.3pt; }
+  .cv-stack-item strong { color: var(--ink); }
+  .cv-stack-item .o { color: var(--ink-mute); }
+
+  .cv-form-block { margin-bottom: 9pt; }
+  .cv-form-block:last-child { margin-bottom: 0; }
+  .cv-subhead {
+    font-family: var(--f-mono);
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin: 0 0 4pt;
+    font-weight: 500;
+  }
+  .cv-form-item { margin-bottom: 4pt; font-size: 9.3pt; }
+  .cv-form-item .t { font-weight: 600; }
+  .cv-form-item .o { color: var(--ink-mute); }
+  .cv-form-item .d { font-family: var(--f-mono); font-size: 7.8pt; color: var(--ink-ghost); }
+
+  .cv-affil-list { display: flex; flex-direction: column; gap: 8pt; }
+  .cv-affil { break-inside: avoid; }
+  .cv-affil-title { font-family: var(--f-display); font-weight: 600; font-size: 9.8pt; margin: 0 0 1pt; }
+  .cv-affil-org { font-family: var(--f-mono); font-size: 7.8pt; color: var(--ink-ghost); margin-bottom: 3pt; }
+  .cv-affil-p { margin: 0; font-size: 9.2pt; }
+
+</style>
+</head>
+<body>
+
+<header class="cv-header">
+  <h1 class="cv-name">{{HEADER_NAME}}</h1>
+  <div class="cv-eyebrow">{{HEADER_EYEBROW}}</div>
+  <p class="cv-tagline">{{HEADER_TAGLINE}}</p>
+  <div class="cv-contacts">
+    <!--SLOT:CONTACTS-->
+  </div>
+</header>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{PROFILE_TITLE}}</h2>
+  <ul class="cv-profile-list">
+    <!--SLOT:PROFILE-->
+  </ul>
+</section>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{EXP_TITLE}}</h2>
+  <div class="cv-exp-list">
+    <!--SLOT:EXPERIENCES-->
+  </div>
+</section>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{AGENTIC_TITLE}}</h2>
+  <p class="cv-agentic-intro">{{AGENTIC_INTRO}}</p>
+  <div class="cv-agentic-grid">
+    <!--SLOT:AGENTIC-->
+  </div>
+</section>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{STACK_TITLE}}</h2>
+  <div class="cv-stack">
+    <!--SLOT:STACK-->
+  </div>
+</section>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{FORM_TITLE}}</h2>
+  <div class="cv-form-block">
+    <h3 class="cv-subhead">{{EDU_LABEL}}</h3>
+    <!--SLOT:EDUCATION-->
+  </div>
+  <div class="cv-form-block">
+    <h3 class="cv-subhead">{{QUAL_LABEL}}</h3>
+    <!--SLOT:QUALIFICATIONS-->
+  </div>
+  <div class="cv-form-block">
+    <h3 class="cv-subhead">{{LANG_LABEL}}</h3>
+    <!--SLOT:LANGUAGES-->
+  </div>
+</section>
+
+<section class="cv-section">
+  <h2 class="cv-h2">{{AMBITI_TITLE}}</h2>
+  <div class="cv-affil-list">
+    <!--SLOT:AFFILIAZIONI-->
+  </div>
+</section>
+
+</body>
+</html>
