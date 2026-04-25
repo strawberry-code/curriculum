@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristiano Cavo — Software Engineer · Manager · Agentic AI</title>
+<meta name="description" content="CV di Cristiano Cavo. Manager presso PwC, Software Engineer, sistemi software agentici, blockchain, fullstack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #FAFAF7;
+  --paper-warm:   #F2EFE8;
+  --paper-sink:   #E8E4DA;
+  --ink:          #0E0D0B;
+  --ink-soft:     #2A2823;
+  --ink-mute:     #6B665C;
+  --ink-ghost:    #A8A399;
+
+  --accent:       #B8341D;
+  --accent-deep:  #7C2010;
+  --accent-soft:  #E8978A;
+  --accent-wash:  #FBE9E5;
+
+  --moss:         #2C5235;
+  --moss-light:   #5A7A5F;
+  --moss-wash:    #DCE6DD;
+
+  --rule:         #D9D3C5;
+  --rule-soft:    #E5E0D2;
+
+  --f-display:    'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --f-sans:       'Geist', system-ui, -apple-system, sans-serif;
+  --f-mono:       'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+
+  --s-1: 0.5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem;
+  --s-5: 3rem;   --s-6: 4.5rem; --s-7: 6.5rem; --s-8: 9rem;
+
+  --ease-out: cubic-bezier(.16,.84,.32,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+::selection { background: var(--accent); color: var(--paper); }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+  position: relative;
+}
+
+a { color: inherit; text-decoration: none; transition: color 180ms; }
+a:hover { color: var(--accent); }
+
+/* ============================
+   BACKGROUND
+   ============================ */
+.paper-grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(rgba(14,13,11,0.028) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+/* ============================
+   NAV
+   ============================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px 28px;
+  background: rgba(250,250,247,0.86);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid transparent;
+  transition: border-color 300ms var(--ease-out), padding 300ms var(--ease-out);
+}
+nav.scrolled { border-bottom-color: var(--rule); padding: 10px 28px; }
+
+.nav-left  { display: flex; align-items: center; gap: 12px; }
+.nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+
+.mark {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.mark .sur { font-style: italic; color: var(--ink-mute); }
+.mark-bullet {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.35; transform: scale(0.7); }
+}
+
+.nav-center { display: flex; justify-content: center; gap: 24px; }
+.nav-link {
+  font-family: var(--f-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 4px 0;
+}
+.nav-link::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform 260ms var(--ease-out);
+}
+.nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.nav-clock {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+}
+.nav-clock .dot-live {
+  display: inline-block; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--moss);
+  margin-right: 6px; transform: translateY(-1px);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================
+   MAIN
+   ============================ */
+main { position: relative; z-index: 2; }
+.wrap       { max-width: 1240px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 56px); }
+.wrap-tight { max-width: 920px;  margin: 0 auto; padding: 0 clamp(24px, 5vw, 48px); }
+
+/* ============================
+   HERO + SUMMARY
+   ============================ */
+.hero {
+  position: relative;
+  padding: 110px 0 var(--s-6);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 20%, rgba(184,52,29,0.05), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 88% 75%, rgba(44,82,53,0.05), transparent 60%);
+}
+.hero-inner { position: relative; z-index: 3; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow::before {
+  content: ''; display: block;
+  width: 32px; height: 1px;
+  background: currentColor;
+}
+
+.hero-eye { margin-bottom: 24px; }
+
+.hero h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: var(--s-3);
+}
+.hero h1 .it { font-style: italic; color: var(--accent); }
+.hero h1 .mute { color: var(--ink-mute); font-style: italic; }
+
+.hero-tagline {
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: var(--s-5);
+}
+.hero-tagline strong { font-weight: 600; color: var(--ink); }
+.hero-tagline em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+/* ============================
+   SUMMARY CARD — il fulcro scannabile
+   ============================ */
+.summary {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  margin-top: var(--s-3);
+  position: relative;
+}
+@media (max-width: 860px) { .summary { grid-template-columns: 1fr; } }
+
+.summary::before {
+  content: 'TL;DR · 15 SECONDI';
+  position: absolute; top: -10px; left: 24px;
+  background: var(--paper);
+  padding: 0 10px;
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.summary-left {
+  padding: 36px 32px;
+  border-right: 1px solid var(--ink);
+}
+@media (max-width: 860px) {
+  .summary-left { border-right: none; border-bottom: 1px solid var(--ink); }
+}
+
+.sum-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: baseline;
+}
+.sum-row:last-child { border-bottom: none; padding-bottom: 0; }
+.sum-row:first-child { padding-top: 0; }
+
+.sum-k {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.sum-v {
+  font-family: var(--f-sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 400;
+}
+.sum-v strong { font-weight: 600; }
+.sum-v .pip {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  margin-right: 6px;
+  transform: translateY(-2px);
+  animation: pulse 2s ease-in-out infinite;
+}
+.sum-v .accent { color: var(--accent); font-weight: 500; }
+
+.summary-right {
+  padding: 36px 32px;
+  background: var(--paper-warm);
+}
+
+.sum-stack-lbl {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+
+.sum-stack-group { margin-bottom: 18px; }
+.sum-stack-group:last-child { margin-bottom: 0; }
+.sum-stack-group h5 {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 3px;
+  font-weight: 400;
+}
+.chip.hot {
+  color: var(--paper);
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 500;
+}
+.chip.warm {
+  color: var(--accent);
+  background: var(--accent-wash);
+  border-color: var(--accent-soft);
+  font-weight: 500;
+}
+.chip.cool {
+  color: var(--moss);
+  background: var(--moss-wash);
+  border-color: var(--moss-light);
+}
+
+.chip-legend {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  align-items: center;
+}
+.chip-legend .lg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip-legend .lg-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+}
+.chip-legend .lg-swatch.hot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.chip-legend .lg-swatch.cool {
+  background: var(--moss-wash);
+  border-color: var(--moss-light);
+}
+
+/* contact strip below summary */
+.contact-strip {
+  margin-top: var(--s-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  letter-spacing: -0.005em;
+  align-items: baseline;
+}
+.contact-strip .item { display: inline-flex; align-items: baseline; gap: 6px; }
+.contact-strip .item .k {
+  color: var(--ink-mute);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.contact-strip a { border-bottom: 1px solid transparent; }
+.contact-strip a:hover { border-bottom-color: var(--accent); }
+
+/* ============================
+   STAT RAIL
+   ============================ */
+.rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-top: var(--s-6);
+}
+.rail-cell {
+  padding: 26px 22px 24px 0;
+  border-right: 1px solid var(--rule-soft);
+  position: relative;
+}
+.rail-cell:last-child { border-right: none; }
+.rail-num {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: flex; align-items: baseline; gap: 6px;
+}
+.rail-num .ornament {
+  font-size: 0.55em;
+  color: var(--accent);
+  font-style: italic;
+}
+.rail-lbl {
+  margin-top: 14px;
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  max-width: 22ch;
+  line-height: 1.5;
+}
+.rail-cell .idx {
+  position: absolute; top: 8px; right: 12px;
+  font-family: var(--f-mono);
+  font-size: 0.58rem;
+  color: var(--ink-ghost);
+  letter-spacing: 0.12em;
+}
+@media (max-width: 760px) {
+  .rail { grid-template-columns: repeat(2, 1fr); }
+  .rail-cell:nth-child(2) { border-right: none; }
+  .rail-cell:nth-child(1), .rail-cell:nth-child(2) { border-bottom: 1px solid var(--rule-soft); }
+}
+
+/* Philosophy strip */
+.philo {
+  margin-top: var(--s-5);
+  padding: 20px 26px;
+  border-left: 2px solid var(--accent);
+  background: rgba(184,52,29,0.035);
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+.philo .who {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--f-mono);
+  font-style: normal;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ============================
+   SECTION
+   ============================ */
+section.slab { padding: var(--s-7) 0; position: relative; }
+section.slab.alt { background: var(--paper-warm); }
+section.slab.deep { background: var(--ink); color: var(--paper); }
+
+.slab-hdr {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--s-5);
+  align-items: end;
+  margin-bottom: var(--s-5);
+}
+@media (max-width: 860px) { .slab-hdr { grid-template-columns: 1fr; } }
+.slab-hdr .left  { border-right: 1px solid var(--rule); padding-right: 28px; }
+@media (max-width: 860px) { .slab-hdr .left { border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 16px 0; } }
+
+.slab h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.slab h2 .it { color: var(--accent); font-style: italic; }
+.slab h2 .mute { color: var(--ink-mute); font-style: italic; }
+
+.slab.deep h2          { color: var(--paper); }
+.slab.deep h2 .it      { color: var(--accent-soft); }
+.slab.deep h2 .mute    { color: var(--ink-ghost); }
+.slab.deep .eyebrow    { color: var(--accent-soft); }
+
+.slab-kicker {
+  font-family: var(--f-sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  max-width: 50ch;
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+.slab.deep .slab-kicker { color: var(--ink-ghost); }
+
+/* ============================
+   EXPERIENCE TIMELINE
+   ============================ */
+.exp-list { display: grid; gap: 0; }
+.exp {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+.exp:first-child { border-top: 1px solid var(--rule); }
+@media (max-width: 760px) {
+  .exp { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.exp-meta {
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  line-height: 1.7;
+  padding-top: 6px;
+}
+.exp-meta .when { color: var(--ink); display: block; margin-bottom: 4px; font-weight: 500; }
+.exp-meta .where { color: var(--ink-mute); }
+.exp-meta.current .when::after {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--moss); margin-left: 8px;
+  transform: translateY(-1px);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.exp-body h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.exp-body h3 .at { color: var(--ink-mute); font-style: italic; }
+.exp-body h3 .org { color: var(--accent); font-style: italic; }
+
+.exp-desc {
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 10px 0 12px 0;
+  max-width: 64ch;
+}
+.exp-desc em { color: var(--accent); font-style: italic; font-weight: 500; }
+.exp-desc strong { color: var(--ink); font-weight: 600; }
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+/* ============================
+   PROJECTS
+   ============================ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+@media (max-width: 760px) { .proj-grid { grid-template-columns: 1fr; } }
+
+.proj {
+  padding: 24px 26px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  transition: background 220ms var(--ease-out);
+}
+.proj:hover { background: var(--accent-wash); }
+
+.proj-idx {
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-ghost);
+  margin-bottom: 10px;
+}
+.proj h4 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.proj-org {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.proj-body {
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.proj-body ul { list-style: none; padding: 0; margin: 0; }
+.proj-body li {
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.proj-body li::before {
+  content: '→';
+  position: absolute; left: 0; top: 0;
+  color: var(--accent);
+  font-family: var(--f-mono);
+  font-size: 0.85em;
+}
+.proj-body strong { color: var(--ink); font-weight: 600; }
+
+/* ============================
+   AGENTIC FOCUS (deep section)
+   ============================ */
+.deep .agentic-body {
+  font-family: var(--f-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--paper);
+}
+.deep .agentic-body p { margin-bottom: 1.1em; }
+.deep .agentic-body strong { color: var(--paper); font-weight: 600; }
+.deep .agentic-body em { color: var(--accent-soft); font-style: italic; font-weight: 500; }
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: var(--s-5);
+  border-top: 1px solid rgba(250,250,247,0.16);
+}
+@media (max-width: 760px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.cap {
+  padding: 22px 20px 22px 0;
+  border-right: 1px solid rgba(250,250,247,0.1);
+  border-bottom: 1px solid rgba(250,250,247,0.1);
+}
+.cap:last-child { border-right: none; }
+.cap-tag {
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 10px;
+}
+.cap-name {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.cap-desc {
+  font-family: var(--f-sans);
+  font-weight: 300;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink-ghost);
+}
+
+/* ============================
+   THREE COL
+   ============================ */
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+@media (max-width: 860px) { .three-col { grid-template-columns: 1fr; } }
+
+.tcol {
+  padding: 26px 26px 26px 0;
+  border-right: 1px solid var(--rule-soft);
+}
+.tcol:last-child { border-right: none; padding-right: 0; }
+@media (max-width: 860px) {
+  .tcol { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 22px 0; }
+  .tcol:last-child { border-bottom: none; }
+}
+
+.tcol-eye {
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.tcol-eye::before {
+  content: ''; width: 24px; height: 1px; background: currentColor;
+}
+
+.tcol-item { margin-bottom: 16px; }
+.tcol-item:last-child { margin-bottom: 0; }
+.tcol-item .t {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+.tcol-item .o {
+  font-family: var(--f-sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.tcol-item .d {
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* Languages bars */
+.lang { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; margin-bottom: 12px; }
+.lang-name {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.lang-name .skill {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.dots { display: flex; gap: 4px; }
+.dot {
+  width: 9px; height: 9px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+.dot.on { background: var(--accent); }
+
+/* ============================
+   FOOTER
+   ============================ */
+footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--s-6) 0 var(--s-4) 0;
+  position: relative;
+  z-index: 2;
+}
+footer .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); align-items: end; }
+@media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
+
+.foot-mark {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.foot-mark .it { color: var(--accent-soft); font-style: italic; }
+.foot-mark .mute { color: var(--ink-ghost); font-style: italic; }
+
+.foot-links {
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  letter-spacing: -0.005em;
+  color: var(--ink-ghost);
+  line-height: 2;
+}
+.foot-links .row { display: flex; gap: 8px; align-items: baseline; }
+.foot-links .k { color: var(--accent-soft); min-width: 80px; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.62rem; }
+
+.foot-meta {
+  margin-top: var(--s-5);
+  padding-top: 16px;
+  border-top: 1px solid rgba(250,250,247,0.12);
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-ghost);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+
+/* ============================
+   FADE UP
+   ============================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 680ms var(--ease-out), transform 680ms var(--ease-out);
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+
+/* ============================
+   STACK SECTION (extra)
+   ============================ */
+.tcol-item .lst {
+  font-family: var(--f-sans);
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  line-height: 1.65;
+  margin-top: 4px;
+}
+.tcol-item .lst span {
+  display: inline;
+}
+.tcol-item .lst span:not(:last-child)::after {
+  content: ' · ';
+  color: var(--ink-ghost);
+}
+
+.approach-band {
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+}
+@media (max-width: 760px) { .approach-band { grid-template-columns: 1fr; } }
+
+.approach-eye {
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.approach-eye::before {
+  content: ''; width: 24px; height: 1px; background: currentColor;
+}
+
+.approach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--f-sans);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.approach-list li {
+  padding: 8px 0 8px 22px;
+  border-bottom: 1px dashed var(--rule-soft);
+  position: relative;
+}
+.approach-list li:last-child { border-bottom: none; }
+.approach-list li::before {
+  content: '◆';
+  position: absolute; left: 0; top: 8px;
+  color: var(--accent);
+  font-size: 0.7em;
+}
+.approach-list strong {
+  color: var(--ink);
+  font-weight: 600;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.domains {
+  font-family: var(--f-sans);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.domains .d-item {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 0 4px 6px 0;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  border-radius: 3px;
+}
+
+/* ============================
+   LANG SWITCHER
+   ============================ */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 180ms, color 180ms;
+}
+.lang-btn:hover { color: var(--accent); }
+.lang-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.lang-btn + .lang-btn { border-left: 1px solid var(--rule); }
+.lang-btn.active + .lang-btn { border-left-color: var(--ink); }
+.lang-flag {
+  display: inline-block;
+  width: 16px;
+  height: 11px;
+  border-radius: 1px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+.lang-flag.it {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><rect width='1' height='2' fill='%23009246'/><rect x='1' width='1' height='2' fill='%23ffffff'/><rect x='2' width='1' height='2' fill='%23ce2b37'/></svg>");
+}
+.lang-flag.en {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'><clipPath id='t'><path d='M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z'/></clipPath><path d='M0,0 v30 h60 v-30 z' fill='%23012169'/><path d='M0,0 L60,30 M60,0 L0,30' stroke='%23ffffff' stroke-width='6'/><path d='M0,0 L60,30 M60,0 L0,30' clip-path='url(%23t)' stroke='%23C8102E' stroke-width='4'/><path d='M30,0 v30 M0,15 h60' stroke='%23ffffff' stroke-width='10'/><path d='M30,0 v30 M0,15 h60' stroke='%23C8102E' stroke-width='6'/></svg>");
+}
+
+/* ============================
+   AFFILIATIONS / INTERESTS
+   ============================ */
+.affil-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+@media (max-width: 860px) { .affil-grid { grid-template-columns: 1fr; } }
+
+.affil {
+  padding: 28px 30px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.affil-eye {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.affil-eye .since {
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+.affil-eye::before {
+  content: ''; width: 22px; height: 1px; background: var(--accent);
+}
+
+.affil h4 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.affil h4 .it { color: var(--accent); font-style: italic; }
+
+.affil-org {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+
+.affil-body {
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.affil-body p { margin-bottom: 0.8em; }
+.affil-body p:last-child { margin-bottom: 0; }
+.affil-body strong { color: var(--ink); font-weight: 600; }
+.affil-body em { color: var(--accent); font-style: italic; font-weight: 500; }
+
+.affil-event {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--paper-warm);
+  border-left: 2px solid var(--accent);
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.affil-event .lbl {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+/* ============================
+   PRINT
+   ============================ */
+@media print {
+  nav, footer, .paper-grain { display: none; }
+  body { background: white; color: black; }
+  .hero { padding: 20px 0; }
+  section.slab { padding: 24px 0; page-break-inside: avoid; }
+  section.slab.deep { background: white; color: black; }
+  section.slab.deep h2, section.slab.deep .cap-name, section.slab.deep .agentic-body { color: black; }
+  .summary { border-color: black; }
+  .fade-up { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="paper-grain"></div>
+
+<nav id="topnav">
+  <div class="nav-left">
+    <a href="#top" class="mark"><span class="mark-bullet"></span>Cristiano <span class="sur">Cavo</span></a>
+  </div>
+  <div class="nav-center">
+    <a href="#esperienze" class="nav-link" data-i18n="nav_exp">Esperienze</a>
+    <a href="#agentic" class="nav-link" data-i18n="nav_ag">Agentic</a>
+    <a href="#progetti" class="nav-link" data-i18n="nav_proj">Progetti</a>
+    <a href="#stack" class="nav-link" data-i18n="nav_stack">Stack</a>
+    <a href="#ambiti" class="nav-link" data-i18n="nav_amb">Ambiti</a>
+    <a href="#contatti" class="nav-link" data-i18n="nav_cont">Contatti</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Lingua / Language">
+      <button class="lang-btn active" data-lang="it" aria-label="Italiano"><span class="lang-flag it"></span>IT</button>
+      <button class="lang-btn" data-lang="en" aria-label="English"><span class="lang-flag en"></span>EN</button>
+    </div>
+    <span class="nav-clock"><span class="dot-live"></span>v. Apr 2026</span>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============================ HERO + SUMMARY ============================ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow hero-eye" data-i18n="hero_eyebrow">Curriculum Vitae · Software Engineer · Manager · Agentic AI</div>
+
+      <h1 data-i18n="hero_h1">Cristiano <span class="it">Cavo.</span></h1>
+
+      <p class="hero-tagline" data-i18n="hero_tagline"><strong>Manager</strong> presso PricewaterhouseCoopers, ingegnere informatico iscritto all'Albo. <em>Polyglot backend-oriented</em>: Python, Go, Rust, TypeScript, Elixir. Focus su <em>AI engineering</em> — RAG, MCP, agentic systems — e architetture software estensibili in produzione.</p>
+
+      <!-- ===== SUMMARY: TUTTO IL CV IN UN COLPO D'OCCHIO ===== -->
+      <div class="summary">
+        <div class="summary-left">
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_role">Ruolo</div>
+            <div class="sum-v" data-i18n="sum_v_role"><span class="pip"></span><strong>Manager</strong> · PricewaterhouseCoopers <span class="accent">— da Ott 2025</span></div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_seniority">Seniority</div>
+            <div class="sum-v" data-i18n="sum_v_seniority"><strong>6+ anni</strong> in PwC · progressione Associate → Senior Associate → Manager</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_focus">Focus</div>
+            <div class="sum-v" data-i18n="sum_v_focus"><strong>AI Engineering</strong> · RAG · MCP · agentic systems · architetture estensibili</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_domains">Domini</div>
+            <div class="sum-v" data-i18n="sum_v_domains">Banking · Government · Fintech · Geospatial · Content automation · IoT · Document/OCR</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_edu">Formazione</div>
+            <div class="sum-v" data-i18n="sum_v_edu"><strong>M.Sc.</strong> Computer Engineering · Politecnico di Torino · 2019</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_albo">Albo</div>
+            <div class="sum-v" data-i18n="sum_v_albo">Ingegnere dell'Informazione · Sezione A · Alessandria · 2023</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-k" data-i18n="sum_k_lang">Lingue</div>
+            <div class="sum-v" data-i18n="sum_v_lang">Italiano (nativo) · Inglese (B2/C1) · Francese (A2)</div>
+          </div>
+        </div>
+
+        <div class="summary-right">
+          <div class="sum-stack-lbl" data-i18n="sum_stack_lbl">Stack — riferimenti rapidi</div>
+
+          <div class="sum-stack-group">
+            <h5 data-i18n="sum_h5_lang">Linguaggi · polyglot backend</h5>
+            <div class="chip-row">
+              <span class="chip hot">Python</span>
+              <span class="chip hot">Go</span>
+              <span class="chip hot">Rust</span>
+              <span class="chip hot">TypeScript</span>
+              <span class="chip">Elixir</span>
+              <span class="chip">Bash</span>
+              <span class="chip">Kotlin</span>
+            </div>
+          </div>
+
+          <div class="sum-stack-group">
+            <h5 data-i18n="sum_h5_ai">AI Engineering · frontier</h5>
+            <div class="chip-row">
+              <span class="chip hot">RAG (vector / hybrid / graph)</span>
+              <span class="chip hot">MCP server & client</span>
+              <span class="chip hot">Agentic systems</span>
+              <span class="chip hot">Multi-agent orchestration</span>
+              <span class="chip hot">LiteLLM / Rig-core</span>
+              <span class="chip hot">Embedding pipelines</span>
+            </div>
+          </div>
+
+          <div class="sum-stack-group">
+            <h5 data-i18n="sum_h5_backend">Backend · API · Data</h5>
+            <div class="chip-row">
+              <span class="chip">FastAPI</span>
+              <span class="chip">Axum / Tokio</span>
+              <span class="chip">Express</span>
+              <span class="chip">Chi / Gin</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Qdrant</span>
+              <span class="chip">Neo4j</span>
+              <span class="chip">Elasticsearch</span>
+              <span class="chip">Redis</span>
+              <span class="chip">Celery</span>
+            </div>
+          </div>
+
+          <div class="sum-stack-group">
+            <h5 data-i18n="sum_h5_front">Frontend · DevOps · Tooling</h5>
+            <div class="chip-row">
+              <span class="chip">Next.js</span>
+              <span class="chip">React</span>
+              <span class="chip">Tailwind / Shadcn</span>
+              <span class="chip">Bun</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Vercel</span>
+              <span class="chip">uv / Cargo / Bun</span>
+              <span class="chip">MyPy / Ruff / Clippy</span>
+            </div>
+          </div>
+
+          <div class="sum-stack-group">
+            <h5 data-i18n="sum_h5_chain">Blockchain · esperienza enterprise</h5>
+            <div class="chip-row">
+              <span class="chip cool">Corda R3 v4 / v5</span>
+              <span class="chip cool">Ethereum / Solidity</span>
+              <span class="chip cool">Hyperledger</span>
+            </div>
+          </div>
+
+          <div class="chip-legend">
+            <span class="lg-item"><span class="lg-swatch hot"></span><span data-i18n="legend_hot">uso quotidiano · focus attuale</span></span>
+            <span class="lg-item"><span class="lg-swatch"></span><span data-i18n="legend_default">stack solido</span></span>
+            <span class="lg-item"><span class="lg-swatch cool"></span><span data-i18n="legend_cool">esperienza enterprise consolidata</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-strip">
+        <span class="item"><span class="k" data-i18n="contact_email">Email</span> <a href="mailto:cristianocavo@icloud.com">cristianocavo@icloud.com</a></span>
+        <span class="item"><span class="k" data-i18n="contact_pec">PEC</span> cristiano.cavo@ingpec.eu</span>
+        <span class="item"><span class="k" data-i18n="contact_tel">Tel</span> +39 346 9638573</span>
+        <span class="item"><span class="k" data-i18n="contact_github">GitHub</span> <a href="https://github.com/strawberry-code" target="_blank">strawberry-code</a></span>
+        <span class="item"><span class="k" data-i18n="contact_linkedin">LinkedIn</span> <a href="https://linkedin.com/in/cristiano-cavo/" target="_blank">cristiano-cavo</a></span>
+        <span class="item"><span class="k" data-i18n="contact_sede">Sede</span> Gavi (AL) · Piemonte</span>
+      </div>
+
+      <div class="rail">
+        <div class="rail-cell">
+          <span class="idx">01</span>
+          <div class="rail-num">6<span class="ornament">+</span></div>
+          <div class="rail-lbl" data-i18n="rail_lbl_01">anni in<br>PwC Consulting</div>
+        </div>
+        <div class="rail-cell">
+          <span class="idx">02</span>
+          <div class="rail-num">2025<span class="ornament">·</span></div>
+          <div class="rail-lbl" data-i18n="rail_lbl_02">Manager<br>PwC Consulting</div>
+        </div>
+        <div class="rail-cell">
+          <span class="idx">03</span>
+          <div class="rail-num">2<span class="ornament">y</span></div>
+          <div class="rail-lbl" data-i18n="rail_lbl_03">focus dedicato<br>AI agentica frontier</div>
+        </div>
+        <div class="rail-cell">
+          <span class="idx">04</span>
+          <div class="rail-num">M.Sc<span class="ornament">·</span></div>
+          <div class="rail-lbl" data-i18n="rail_lbl_04">Politecnico di Torino<br>Software specialist</div>
+        </div>
+      </div>
+
+      <div class="philo">
+        “The only easy day was yesterday.”
+        <span class="who" data-i18n="philo_who">— motto operativo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ESPERIENZE ============================ -->
+  <section class="slab alt" id="esperienze">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_exp_eye">Percorso professionale</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_exp_kicker">Sette anni, un'unica direzione: prodotti che funzionano in produzione.</div>
+          <h2 data-i18n="sec_exp_h2">Esperienze, <span class="mute">in ordine cronologico</span> <span class="it">inverso</span>.</h2>
+        </div>
+      </div>
+
+      <div class="exp-list">
+
+        <div class="exp">
+          <div class="exp-meta current">
+            <span class="when" data-i18n="date_now">Ott 2025 — oggi</span>
+            <span class="where">Milano · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_manager"><span class="org">Manager</span> <span class="at">— PricewaterhouseCoopers</span></h3>
+            <p class="exp-desc" data-i18n="desc_manager">Guida tecnica di iniziative di <em>sviluppo software agentico</em> per il mercato enterprise. Responsabile dell'evoluzione di una practice <strong>frontier su AI generativa applicata</strong>: architetture RAG, integrazione MCP, orchestrazione di agenti autonomi su casi d'uso banking, government e industrial. Lead tecnico, mentoring del team, interfaccia con i clienti.</p>
+            <div class="exp-tags">
+              <span class="chip warm">AI Agentica</span>
+              <span class="chip warm">LLM / RAG / MCP</span>
+              <span class="chip warm">Solution Architecture</span>
+              <span class="chip">Team Lead</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">Blockchain</span>
+              <span class="chip">Fullstack</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_2022_2025">Feb 2022 — Ott 2025</span>
+            <span class="where">Milano · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_sa"><span class="org">Senior Associate</span> <span class="at">— PricewaterhouseCoopers</span></h3>
+            <p class="exp-desc" data-i18n="desc_sa">Tre anni dedicati a un progetto ambizioso presso un <strong>consorzio di innovazione tecnologica per il settore bancario</strong> per la <em>digitalizzazione e blockchainizzazione di strumenti finanziari</em> rivolti a banche e istituti governativi. Disegno architetturale e applicativo della piattaforma <strong>da zero</strong>: architettura, design funzionale, design software, relazione diretta con il cliente, attività di supporto agli stakeholders e lavoro "politico" tra le parti coinvolte. In parallelo, dal 2024 avvio del focus dedicato su prompt engineering e agenti AI, entrato nella practice GenAI dell'azienda. Sviluppo su <strong>Corda R3</strong> (v4 e v5), Kotlin, Python, Cloud SaaS.</p>
+            <div class="exp-tags">
+              <span class="chip">Banking R&D Consortium</span>
+              <span class="chip">Solution Architect</span>
+              <span class="chip">Stakeholder Mgmt</span>
+              <span class="chip">Finance / Government</span>
+              <span class="chip">Corda 5</span>
+              <span class="chip">Kotlin</span>
+              <span class="chip">Python</span>
+              <span class="chip">Cloud SaaS</span>
+              <span class="chip warm">Prompt Engineer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_2019_2022">Dic 2019 — Feb 2022</span>
+            <span class="where">Milano · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_ass"><span class="org">Associate</span> <span class="at">— PricewaterhouseCoopers</span></h3>
+            <p class="exp-desc" data-i18n="desc_ass">Due anni dedicati a uno dei <strong>maggiori istituti bancari italiani ed europei</strong> per la <em>gestione degli accessi dei dipendenti</em>: web platform, server, mobile, DevOps. Sono arrivato a presidiare l'<strong>intera piattaforma</strong> end-to-end del servizio, che oggi gestisce stabilmente <strong>oltre 300.000 accessi giornalieri</strong> senza interruzioni. In parallelo, soluzioni di blockchain timestamping per clienti fashion, automotive e nautica.</p>
+            <div class="exp-tags">
+              <span class="chip">Banking · Tier 1 EU</span>
+              <span class="chip">Identity & Access Mgmt</span>
+              <span class="chip">300k+ accessi/giorno</span>
+              <span class="chip">React Native</span>
+              <span class="chip">JS / TS</span>
+              <span class="chip">Python</span>
+              <span class="chip">DevOps</span>
+              <span class="chip">Mobile (iOS/Android/Huawei/WP)</span>
+              <span class="chip">Blockchain Timestamping</span>
+              <span class="chip">Cybersecurity</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_oct_nov_19">Ott 2019 — Nov 2019</span>
+            <span class="where">Torino · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_res"><span class="org">Researcher</span> <span class="at">— LINK Foundation</span></h3>
+            <p class="exp-desc" data-i18n="desc_res">Attività di ricerca su <em>Hyperledger Suite</em> e indicizzazione su Elastic Search per soluzioni blockchain enterprise.</p>
+            <div class="exp-tags">
+              <span class="chip">Research</span>
+              <span class="chip">Blockchain</span>
+              <span class="chip">Hyperledger</span>
+              <span class="chip">Elastic Search</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_ago_set_19">Ago 2019 — Set 2019</span>
+            <span class="where">Torino · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_dev_intek"><span class="org">Software Developer</span> <span class="at">— InteK AI</span></h3>
+            <p class="exp-desc" data-i18n="desc_intek">Sviluppo di una libreria <strong>DLL in C#</strong> per integrare la blockchain <em>NEO</em> (ex Antshares) con i sistemi elettorali elettronici di Cipro. Esposizione concreta a <em>ecosistema .NET</em> e Visual Studio in contesto governativo.</p>
+            <div class="exp-tags">
+              <span class="chip">C# / .NET</span>
+              <span class="chip">Visual Studio</span>
+              <span class="chip">NEO Blockchain</span>
+              <span class="chip">Government</span>
+              <span class="chip">IoT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_2018_19">Apr 2018 — Giu 2019</span>
+            <span class="where">Torino · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_borsa"><span class="org">Borsa di studio</span> <span class="at">— Politecnico di Torino</span></h3>
+            <p class="exp-desc" data-i18n="desc_borsa">Ricerca su <em>database e tecnologie di storage per blockchain</em>, IPFS, sistemi distribuiti. Supporto alla pubblicazione di un articolo scientifico sulle tipologie di database distribuiti.</p>
+            <div class="exp-tags">
+              <span class="chip">Research</span>
+              <span class="chip">Databases</span>
+              <span class="chip">Blockchain</span>
+              <span class="chip">IPFS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_set_apr_19">Set 2018 — Apr 2019</span>
+            <span class="where">Torino · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_tesi"><span class="org">Tesi Magistrale</span> <span class="at">— Politecnico di Torino · General Motors</span></h3>
+            <p class="exp-desc" data-i18n="desc_tesi"><em>Supporting Connected Manufacturing using Blockchain in the Automotive Domain.</em> Progettazione dell'architettura, sviluppo di un prototipo funzionante, integrazione di tre tecnologie abilitanti dell'<strong>Industria 4.0</strong>: IoT, stampa 3D e blockchain. Smart contract Solidity su Ethereum, MakerBot Replicator interfacciata con Raspberry Pi.</p>
+            <div class="exp-tags">
+              <span class="chip">Automotive</span>
+              <span class="chip">Industria 4.0</span>
+              <span class="chip">Ethereum / Solidity</span>
+              <span class="chip">3D Print</span>
+              <span class="chip">IoT</span>
+              <span class="chip">Software Architecture</span>
+              <span class="chip">Traceability</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-meta">
+            <span class="when" data-i18n="date_apr_set_18">Apr 2018 — Set 2018</span>
+            <span class="where">Torino · Italia</span>
+          </div>
+          <div class="exp-body">
+            <h3 data-i18n="h3_dev_csp"><span class="org">Software Developer</span> <span class="at">— CSP</span></h3>
+            <p class="exp-desc" data-i18n="desc_csp">Settori health e sostenibilità ambientale. Sviluppo fullstack PHP (SLIM micro-framework), gamification con <em>Unity 3D</em> per progetti di riabilitazione ospedaliera (T.R.E.E.), IoT con MQTT.</p>
+            <div class="exp-tags">
+              <span class="chip">PHP / SLIM</span>
+              <span class="chip">Unity 3D</span>
+              <span class="chip">C# / WPF</span>
+              <span class="chip">Health</span>
+              <span class="chip">IoT / MQTT</span>
+              <span class="chip">Gamification</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ AGENTIC FOCUS (deep) ============================ -->
+  <section class="slab deep" id="agentic">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_ag_eye">Focus 2024–2026</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_ag_kicker">Dove sto investendo tempo, attenzione e codice da due anni.</div>
+          <h2 data-i18n="sec_ag_h2">Agentic <span class="it">AI</span><br><span class="mute">come pratica quotidiana.</span></h2>
+        </div>
+      </div>
+
+      <div class="agentic-body">
+        <p data-i18n="agentic_p1">L'azienda in cui sto lavorando sta investendo risorse importanti su questo verticale e il nostro team è <em>frontier</em> sul tema in Italia. Lo applichiamo <strong>tutti i giorni</strong>, tenendoci aggiornati sull'evoluzione settimanale dell'ecosistema (Anthropic, OpenAI, standard MCP, framework di orchestrazione).</p>
+        <p data-i18n="agentic_p2">Non è un'area di curiosità laterale, è il mio mestiere attuale. Costruisco sistemi <em>multi-agente</em> in produzione, definisco knowledge base interrogabili da LLM, progetto skill e tooling per agenti autonomi, integro RAG su corpus enterprise.</p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap">
+          <div class="cap-tag" data-i18n="cap_01_tag">01 / Architetture</div>
+          <div class="cap-name" data-i18n="cap_01_name">RAG su corpus enterprise</div>
+          <div class="cap-desc" data-i18n="cap_01_desc">Pipeline di ingestion, chunking, retrieval ibrido (semantic + lexical), grounding, citation tracking.</div>
+        </div>
+        <div class="cap">
+          <div class="cap-tag" data-i18n="cap_02_tag">02 / Protocolli</div>
+          <div class="cap-name" data-i18n="cap_02_name">MCP server & client</div>
+          <div class="cap-desc" data-i18n="cap_02_desc">Esposizione di tool e risorse aziendali ad agenti AI tramite Model Context Protocol.</div>
+        </div>
+        <div class="cap">
+          <div class="cap-tag" data-i18n="cap_03_tag">03 / Orchestrazione</div>
+          <div class="cap-name" data-i18n="cap_03_name">Agenti autonomi</div>
+          <div class="cap-desc" data-i18n="cap_03_desc">Loop di pianificazione, esecuzione, valutazione. Multi-step workflows con human-in-the-loop.</div>
+        </div>
+        <div class="cap">
+          <div class="cap-tag" data-i18n="cap_04_tag">04 / Conoscenza</div>
+          <div class="cap-name" data-i18n="cap_04_name">LLM wiki & skill</div>
+          <div class="cap-desc" data-i18n="cap_04_desc">Knowledge base strutturate per agenti, skill modulari, tooling versionato e testabile.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROGETTI ============================ -->
+  <section class="slab" id="progetti">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_proj_eye">Selezione progetti</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_proj_kicker">Una selezione tra ciò che si può raccontare. Molti progetti coperti da NDA.</div>
+          <h2 data-i18n="sec_proj_h2">Progetti <span class="it">in produzione</span><br>e ricerca <span class="mute">applicata</span>.</h2>
+        </div>
+      </div>
+
+      <div class="proj-grid">
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 01</div>
+          <h4 data-i18n="proj_01_h">Digitalizzazione Strumenti Finanziari — Banking R&D Consortium</h4>
+          <div class="proj-org" data-i18n="proj_01_org">PricewaterhouseCoopers · 2022 — current</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_01_li1">Progetto presso un <strong>consorzio di innovazione tecnologica per il settore bancario</strong>, per banche e istituti governativi (NDA)</li>
+              <li data-i18n="proj_01_li2">Disegno architetturale e applicativo della piattaforma <strong>da zero</strong></li>
+              <li data-i18n="proj_01_li3">Blockchain · cybersecurity · fullstack · cessione del quinto digitalizzata</li>
+              <li data-i18n="proj_01_li4">Ruolo: solution architect, stakeholder management, lavoro politico tra le parti</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 02</div>
+          <h4 data-i18n="proj_02_h">Notarisation Services</h4>
+          <div class="proj-org" data-i18n="proj_02_org">PricewaterhouseCoopers · 2022 — current</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_02_li1">Timestamping basato su blockchain</li>
+              <li data-i18n="proj_02_li2">Clienti in fashion, automotive e nautica</li>
+              <li data-i18n="proj_02_li3">Tecnologia fullstack, sviluppatore e maintainer</li>
+              <li data-i18n="proj_02_li4">Long-term project, multi-tenant</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 03</div>
+          <h4 data-i18n="proj_03_h">Identity & Access Management — Tier 1 EU Bank</h4>
+          <div class="proj-org" data-i18n="proj_03_org">PricewaterhouseCoopers · 2019 — current</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_03_li1">Una delle maggiori banche italiane ed europee — NDA</li>
+              <li data-i18n="proj_03_li2">Gestione accessi dipendenti: <strong>oltre 300.000 accessi/giorno</strong> in produzione stabile</li>
+              <li data-i18n="proj_03_li3">Piattaforma <strong>fullstack</strong>: web, server, mobile (iOS, Android, Huawei, WP), DevOps</li>
+              <li data-i18n="proj_03_li4">Cybersecurity end-to-end · monitoring operatori · blockchain</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 04</div>
+          <h4 data-i18n="proj_04_h">Elections in Cyprus on NEO Blockchain</h4>
+          <div class="proj-org" data-i18n="proj_04_org">InteK AI · 2019</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_04_li1">Progetto governativo</li>
+              <li data-i18n="proj_04_li2">Libreria DLL in <strong>C# / .NET</strong></li>
+              <li data-i18n="proj_04_li3">Bridge tra blockchain NEO e sistemi elettorali elettronici</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 05</div>
+          <h4 data-i18n="proj_05_h">T.R.E.E. — Hospital Touchwall Games</h4>
+          <div class="proj-org" data-i18n="proj_05_org">CSP · 2018</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_05_li1">Touchwall games per riabilitazione (Unity 3D)</li>
+              <li data-i18n="proj_05_li2">Launcher in <strong>C# / WPF</strong> con Visual Studio</li>
+              <li data-i18n="proj_05_li3">Disegno dell'architettura software e dei protocolli di scambio dati</li>
+              <li data-i18n="proj_05_li4"><a href="http://www.generascarl.it/progetto-tree.html" target="_blank">Project manifest →</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 06</div>
+          <h4 data-i18n="proj_06_h">LAN Data Sharing Application</h4>
+          <div class="proj-org" data-i18n="proj_06_org">Politecnico di Torino · 2016 — 2017</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_06_li1">Applicazione desktop client-server in <strong>C# / .NET</strong> con WPF (Visual Studio)</li>
+              <li data-i18n="proj_06_li2">Protocollo TCP/UDP configurabile, ottimizzazione invio pacchetti</li>
+              <li data-i18n="proj_06_li3">Progress bar predittive ad alte prestazioni</li>
+              <li data-i18n="proj_06_li4">Marshalling/unmarshalling XML, gestione concorrenza</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 07</div>
+          <h4 data-i18n="proj_07_h">Connected Manufacturing on Blockchain</h4>
+          <div class="proj-org" data-i18n="proj_07_org">Politecnico di Torino · General Motors · 2018 — 2019</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_07_li1">Tesi magistrale — IoT + 3D Print + Blockchain</li>
+              <li data-i18n="proj_07_li2">Smart contract Solidity su Ethereum</li>
+              <li data-i18n="proj_07_li3">Architettura, prototipo funzionante, analisi AS IS / TO BE</li>
+              <li data-i18n="proj_07_li4">MakerBot Replicator interfacciata con Raspberry Pi</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-idx">PROJ / 08</div>
+          <h4 data-i18n="proj_08_h">Verigraph & altri progetti accademici</h4>
+          <div class="proj-org" data-i18n="proj_08_org">Politecnico di Torino · 2016 — 2018</div>
+          <div class="proj-body">
+            <ul>
+              <li data-i18n="proj_08_li1">Verigraph — verifica policy di rete, JSON marshalling</li>
+              <li data-i18n="proj_08_li2">IFTTT PoliTo — protocollo client-server per "Applicazioni Internet"</li>
+              <li data-i18n="proj_08_li3">ResponSEAble — fullstack PHP/Bootstrap per gioco educativo iOS/Android</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ STACK COMPLETO ============================ -->
+  <section class="slab alt" id="stack">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_stack_eye">Stack & engineering</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_stack_kicker">Cosa uso oggi in produzione e in progetti significativi. Una scheda tecnica, non un elenco di buzzword.</div>
+          <h2 data-i18n="sec_stack_h2">Stack <span class="it">tecnico</span><br>e <span class="mute">approccio</span>.</h2>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="stack_col1_eye">LLM & AI Engineering</div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_rag">RAG Architecture</div>
+            <div class="o" data-i18n="stack_o_rag">Vector search, hybrid search, graph RAG</div>
+            <div class="lst"><span>Qdrant</span><span>Neo4j</span><span>Elasticsearch</span><span>retrieval tuning</span></div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_agentic">Agentic Systems</div>
+            <div class="o" data-i18n="stack_o_agentic">Tool use, multi-agent orchestration, planning loops</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_mcp">Model Context Protocol</div>
+            <div class="o" data-i18n="stack_o_mcp">Server, client, integrazioni in produzione</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_multi">Multi-LLM Abstraction</div>
+            <div class="o" data-i18n="stack_o_multi">LiteLLM, Rig-core, model routing</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_emb">Embedding Pipelines</div>
+            <div class="o" data-i18n="stack_o_emb">Semantic indexing, chunking, citation tracking</div>
+          </div>
+        </div>
+
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="stack_col2_eye">Backend · API · Data</div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_api">API Design REST/OpenAPI-first</div>
+            <div class="o" data-i18n="stack_o_api">Generazione client e schema automatica</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_fw">Framework backend</div>
+            <div class="o" data-i18n="stack_o_fw">FastAPI, Axum (Tokio), Express, Chi/Gin</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_async">Async Task Processing</div>
+            <div class="o" data-i18n="stack_o_async">Celery, Tokio, background queues, microservizi event-driven</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_rel">Persistenza relazionale</div>
+            <div class="o" data-i18n="stack_o_rel">PostgreSQL, SQLAlchemy, query optimization, SQLite (edge)</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_spec">Persistenza specializzata</div>
+            <div class="o" data-i18n="stack_o_spec">Vector DB (Qdrant), Graph DB (Neo4j), full-text (Elasticsearch), Redis</div>
+          </div>
+        </div>
+
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="stack_col3_eye">Frontend · DevOps · Testing</div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_front">Frontend Stack</div>
+            <div class="o" data-i18n="stack_o_front">React/Next.js, TypeScript strict, Tailwind, Shadcn</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_tool">Tooling moderno</div>
+            <div class="o" data-i18n="stack_o_tool">Bun runtime, monorepo (Bun + Cargo workspaces), uv, Cargo, Go modules</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_dep">Container & Deploy</div>
+            <div class="o" data-i18n="stack_o_dep">Docker/Compose, Vercel, edge deployment Raspberry Pi</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_qg">Quality Gates</div>
+            <div class="o" data-i18n="stack_o_qg">MyPy, TypeScript strict, Ruff, Clippy, ESLint, pre-commit hooks</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="stack_t_test">Testing</div>
+            <div class="o" data-i18n="stack_o_test">Pytest + pytest-asyncio, Playwright E2E, Cargo test, TDD pragmatico</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="approach-band">
+        <div>
+          <div class="approach-eye" data-i18n="app_eye">Approccio Engineering</div>
+          <ul class="approach-list">
+            <li data-i18n="app_li1"><strong>Performance-first</strong> con documentazione agent-readable</li>
+            <li data-i18n="app_li2"><strong>Architetture estensibili</strong> · plugin system, dependency inversion, separazione layer</li>
+            <li data-i18n="app_li3"><strong>Specification-driven development</strong> · OpenAPI → tipi generati, dual-chain pattern (sync API + async indexing)</li>
+            <li data-i18n="app_li4"><strong>Quality gates automatici</strong> · linter, type checker, semantic analysis</li>
+            <li data-i18n="app_li5"><strong>Documentazione viva</strong> · ADR, ARCHITECTURE.md, spec versionate, Conventional Commits, Keep a Changelog, SemVer</li>
+            <li data-i18n="app_li6"><strong>Workflow bilingue</strong> · italiano/inglese in commit, ticket, documentazione</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="approach-eye" data-i18n="dom_eye">Domini verticali toccati</div>
+          <div class="domains">
+            <span class="d-item">Banking · IAM</span>
+            <span class="d-item">Government</span>
+            <span class="d-item">Aerospace · Defense (interesse)</span>
+            <span class="d-item">Fintech / trading</span>
+            <span class="d-item">Geospatial · historical data</span>
+            <span class="d-item">Content automation (video/audio/web)</span>
+            <span class="d-item">Simulation engines</span>
+            <span class="d-item">Chat / messaging platforms</span>
+            <span class="d-item">Home automation · IoT</span>
+            <span class="d-item">Document processing · OCR</span>
+            <span class="d-item">News aggregation</span>
+            <span class="d-item">Blockchain enterprise</span>
+            <span class="d-item">Industrial 4.0</span>
+          </div>
+
+          <div class="approach-eye" style="margin-top: 20px;">Stack legacy / accademico</div>
+          <div class="domains">
+            <span class="d-item">C# / .NET / WPF</span>
+            <span class="d-item">Java</span>
+            <span class="d-item">PHP / SLIM</span>
+            <span class="d-item">React Native</span>
+            <span class="d-item">Solidity / Ethereum</span>
+            <span class="d-item">Corda R3 v4-v5 / Kotlin</span>
+            <span class="d-item">Hyperledger</span>
+            <span class="d-item">Unity 3D</span>
+            <span class="d-item">MongoDB · IPFS · MapReduce</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ EDU / QUAL / LANG ============================ -->
+  <section class="slab" id="formazione">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_form_eye">Formazione · Albo · Lingue</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_form_kicker">Le credenziali formali, in pillole.</div>
+          <h2 data-i18n="sec_form_h2">Studio, <span class="it">qualifiche</span><br>e <span class="mute">lingue parlate</span>.</h2>
+        </div>
+      </div>
+
+      <div class="three-col">
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="form_eye_edu">Education</div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="edu_msc_t">M.Sc. in Computer Engineering</div>
+            <div class="o" data-i18n="edu_msc_o">Software specialist · Politecnico di Torino</div>
+            <div class="d" data-i18n="edu_msc_d">Aprile 2019</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="edu_bsc_t">B.Sc. in Computer Engineering</div>
+            <div class="o" data-i18n="edu_bsc_o">Politecnico di Torino</div>
+            <div class="d" data-i18n="edu_bsc_d">Ottobre 2015</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="edu_lic_t">Diploma Liceo Scientifico</div>
+            <div class="o" data-i18n="edu_lic_o">Liceo Edoardo Amaldi · Novi Ligure</div>
+            <div class="d" data-i18n="edu_lic_d">Luglio 2010</div>
+          </div>
+        </div>
+
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="form_eye_qual">Qualifiche</div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="qual_albo_t">Ingegnere dell'Informazione</div>
+            <div class="o" data-i18n="qual_albo_o">Iscritto all'Albo dell'Ordine degli Ingegneri di Alessandria · Sezione A</div>
+            <div class="d" data-i18n="qual_albo_d">Aprile 2023</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="qual_ref_t">Referee accademico</div>
+            <div class="o" data-i18n="qual_ref1_o">Prof. Fabrizio Lamberti · Politecnico di Torino</div>
+            <div class="d">fabrizio.lamberti@polito.it</div>
+          </div>
+          <div class="tcol-item">
+            <div class="t" data-i18n="qual_ref_t">Referee accademico</div>
+            <div class="o" data-i18n="qual_ref2_o">Prof.ssa Valentina Gatteschi · Politecnico di Torino</div>
+            <div class="d">valentina.gatteschi@polito.it</div>
+          </div>
+        </div>
+
+        <div class="tcol">
+          <div class="tcol-eye" data-i18n="form_eye_lang">Lingue</div>
+          <div class="lang">
+            <div class="lang-name"><span data-i18n="lang_it_n">Italiano</span> <span class="skill" data-i18n="lang_it_s">Madrelingua</span></div>
+            <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div>
+          </div>
+          <div class="lang">
+            <div class="lang-name"><span data-i18n="lang_en_n">Inglese</span> <span class="skill" data-i18n="lang_en_s">Professional · B2/C1</span></div>
+            <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div>
+          </div>
+          <div class="lang">
+            <div class="lang-name"><span data-i18n="lang_fr_n">Français</span> <span class="skill" data-i18n="lang_fr_s">Elementare · A2</span></div>
+            <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ AFFILIATIONS / INTERESTS ============================ -->
+  <section class="slab alt" id="ambiti">
+    <div class="wrap fade-up">
+      <div class="slab-hdr">
+        <div class="left"><div class="eyebrow" data-i18n="sec_amb_eye">Attività istituzionali & ambiti culturali</div></div>
+        <div class="right">
+          <div class="slab-kicker" data-i18n="sec_amb_kicker">Quello che faccio fuori dal lavoro retribuito, e i temi che studio con continuità.</div>
+          <h2 data-i18n="sec_amb_h2">Oltre <span class="it">il codice</span><br><span class="mute">— impegno e interessi.</span></h2>
+        </div>
+      </div>
+
+      <div class="affil-grid">
+
+        <div class="affil">
+          <div class="affil-eye"><span data-i18n="affil_1_eye">Affiliazione attiva</span> <span class="since" data-i18n="affil_1_since">· dal 2025</span></div>
+          <h4 data-i18n="affil_1_h">Membro fondatore — <span class="it">Commissione Aerospazio</span></h4>
+          <div class="affil-org" data-i18n="affil_1_org">Ordine degli Ingegneri della Provincia di Alessandria</div>
+          <div class="affil-body">
+            <p data-i18n="affil_1_p1">Partecipo da circa un anno a un'iniziativa istituzionale che mira a stimolare la <strong>conversione del tessuto industriale alessandrino</strong> dal settore automotive a quello <em>aerospaziale e Difesa</em>, in risposta alla crisi dell'automotive e all'attuale instabilità geopolitica.</p>
+            <p data-i18n="affil_1_p2">L'attività include divulgazione, organizzazione di seminari rivolti a tecnici e imprenditori del territorio, mappatura delle competenze necessarie alle aziende per qualificarsi come fornitori del comparto aerospaziale (UNI EN 9100, REACH, cybersecurity di settore, AI applicata).</p>
+            <div class="affil-event">
+              <span class="lbl" data-i18n="affil_1_event_lbl">Prossimo evento</span>
+              <span data-i18n="affil_1_event">Seminario <strong>"Sulla Rotta dell'Aerospazio"</strong><br>9 maggio 2026 · Sede dell'Ordine, Alessandria</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="affil">
+          <div class="affil-eye"><span data-i18n="affil_2_eye">Studio continuativo</span> <span class="since" data-i18n="affil_2_since">· lungo corso</span></div>
+          <h4 data-i18n="affil_2_h">Geopolitica, <span class="it">studi strategici</span> e tecnologia dual-use</h4>
+          <div class="affil-org" data-i18n="affil_2_org">Lettura sistematica · interesse personale</div>
+          <div class="affil-body">
+            <p data-i18n="affil_2_p1">Da diversi anni dedico attenzione costante a <em>scenari geopolitici</em>, dinamiche di sicurezza internazionale, dottrine industriali della Difesa, competizione tecnologica tra blocchi e politiche di <em>dual-use</em>.</p>
+            <p data-i18n="affil_2_p2">Mi interessa in particolare l'intersezione tra <strong>tecnologia</strong> (AI, sistemi autonomi, infrastrutture critiche, blockchain governativa) e <strong>strategia</strong>: come le scelte tecniche di oggi disegnano gli equilibri di domani, e dove l'industria italiana può collocarsi.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contatti">
+  <div class="wrap">
+    <div>
+      <div class="foot-mark" data-i18n="foot_mark">Cristiano <span class="it">Cavo.</span><br><span class="mute">software & agentic builder.</span></div>
+    </div>
+    <div class="foot-links">
+      <div class="row"><span class="k" data-i18n="contact_email">Email</span> <a href="mailto:cristianocavo@icloud.com">cristianocavo@icloud.com</a></div>
+      <div class="row"><span class="k" data-i18n="contact_pec">PEC</span> cristiano.cavo@ingpec.eu</div>
+      <div class="row"><span class="k" data-i18n="contact_tel">Tel</span> +39 346 9638573</div>
+      <div class="row"><span class="k" data-i18n="contact_github">GitHub</span> <a href="https://github.com/strawberry-code" target="_blank">github.com/strawberry-code</a></div>
+      <div class="row"><span class="k" data-i18n="contact_linkedin">LinkedIn</span> <a href="https://linkedin.com/in/cristiano-cavo/" target="_blank">linkedin.com/in/cristiano-cavo</a></div>
+      <div class="row"><span class="k" data-i18n="contact_sede">Sede</span> Gavi (AL) · Piemonte · Italia</div>
+    </div>
+  </div>
+  <div class="wrap foot-meta">
+    <span data-i18n="foot_meta_1">CV · v. Aprile 2026</span>
+    <span data-i18n="foot_meta_2">Autorizzo trattamento dati ex Reg. UE 679/2016 (GDPR)</span>
+    <span data-i18n="foot_meta_3">Set in Instrument Serif · Geist · JetBrains Mono</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('topnav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+
+  // ============================
+  // LANGUAGE SWITCHER
+  // ============================
+  const T_EN = {
+  "hero_eyebrow": "Curriculum Vitae · Software Engineer · Manager · Agentic AI",
+  "hero_h1": "Cristiano <span class=\"it\">Cavo.</span>",
+  "hero_tagline": "<strong>Manager</strong> at PricewaterhouseCoopers, chartered Information Engineer (Italian Registry). <em>Polyglot backend-oriented</em>: Python, Go, Rust, TypeScript, Elixir. Focus on <em>AI engineering</em> — RAG, MCP, agentic systems — and extensible software architectures in production.",
+  "sum_k_role": "Role",
+  "sum_v_role": "<span class=\"pip\"></span><strong>Manager</strong> · PricewaterhouseCoopers <span class=\"accent\">— since Oct 2025</span>",
+  "sum_k_seniority": "Seniority",
+  "sum_v_seniority": "<strong>6+ years</strong> at PwC · progression Associate → Senior Associate → Manager",
+  "sum_k_focus": "Focus",
+  "sum_v_focus": "<strong>AI Engineering</strong> · RAG · MCP · agentic systems · extensible architectures",
+  "sum_k_domains": "Domains",
+  "sum_v_domains": "Banking · Government · Fintech · Geospatial · Content automation · IoT · Document/OCR",
+  "sum_k_edu": "Education",
+  "sum_v_edu": "<strong>M.Sc.</strong> Computer Engineering · Politecnico di Torino · 2019",
+  "sum_k_albo": "Registry",
+  "sum_v_albo": "Chartered Information Engineer · Section A · Alessandria · 2023",
+  "sum_k_lang": "Languages",
+  "sum_v_lang": "Italian (native) · English (B2/C1) · French (A2)",
+  "sum_stack_lbl": "Stack — quick reference",
+  "sum_h5_lang": "Languages · polyglot backend",
+  "sum_h5_ai": "AI Engineering · frontier",
+  "sum_h5_backend": "Backend · API · Data",
+  "sum_h5_front": "Frontend · DevOps · Tooling",
+  "sum_h5_chain": "Blockchain · enterprise experience",
+  "contact_email": "Email",
+  "contact_pec": "Cert. Email",
+  "contact_tel": "Phone",
+  "contact_github": "GitHub",
+  "contact_linkedin": "LinkedIn",
+  "contact_sede": "Based in",
+  "rail_lbl_01": "years at<br>PwC Consulting",
+  "rail_lbl_02": "Manager<br>PwC Consulting",
+  "rail_lbl_03": "dedicated focus<br>frontier agentic AI",
+  "rail_lbl_04": "Politecnico di Torino<br>Software specialist",
+  "philo_who": "— operating motto",
+  "sec_exp_eye": "Professional path",
+  "sec_exp_kicker": "Seven years, one single direction: products that work in production.",
+  "sec_exp_h2": "Experience, <span class=\"mute\">in reverse</span> <span class=\"it\">chronological</span> order.",
+  "date_now": "Oct 2025 — today",
+  "date_2022_2025": "Feb 2022 — Oct 2025",
+  "date_2019_2022": "Dec 2019 — Feb 2022",
+  "date_oct_nov_19": "Oct 2019 — Nov 2019",
+  "date_ago_set_19": "Aug 2019 — Sep 2019",
+  "date_2018_19": "Apr 2018 — Jun 2019",
+  "date_set_apr_19": "Sep 2018 — Apr 2019",
+  "date_apr_set_18": "Apr 2018 — Sep 2018",
+  "where_milano": "Milan · Italy",
+  "where_torino": "Turin · Italy",
+  "h3_manager": "<span class=\"org\">Manager</span> <span class=\"at\">— PricewaterhouseCoopers</span>",
+  "h3_sa": "<span class=\"org\">Senior Associate</span> <span class=\"at\">— PricewaterhouseCoopers</span>",
+  "h3_ass": "<span class=\"org\">Associate</span> <span class=\"at\">— PricewaterhouseCoopers</span>",
+  "h3_res": "<span class=\"org\">Researcher</span> <span class=\"at\">— LINK Foundation</span>",
+  "h3_dev_intek": "<span class=\"org\">Software Developer</span> <span class=\"at\">— InteK AI</span>",
+  "h3_borsa": "<span class=\"org\">Research Grant</span> <span class=\"at\">— Politecnico di Torino</span>",
+  "h3_tesi": "<span class=\"org\">M.Sc. Thesis</span> <span class=\"at\">— Politecnico di Torino · General Motors</span>",
+  "h3_dev_csp": "<span class=\"org\">Software Developer</span> <span class=\"at\">— CSP</span>",
+  "desc_manager": "Technical lead of <em>agentic software development</em> initiatives for the enterprise market. In charge of the evolution of a <strong>frontier practice on applied generative AI</strong>: RAG architectures, MCP integration, autonomous agent orchestration for banking, government and industrial use cases. Tech lead, team mentoring, client-facing role.",
+  "desc_sa": "Three years dedicated to an ambitious project at a <strong>technology innovation consortium for the banking sector</strong> for the <em>digitalisation and blockchainisation of financial instruments</em> aimed at banks and governmental institutions. Architectural and applicative design of the platform <strong>from scratch</strong>: architecture, functional design, software design, direct client relationship, stakeholder support and \"political\" liaison between involved parties. In parallel, from 2024, kick-off of the dedicated focus on prompt engineering and AI agents, joining the company's GenAI practice. Development on <strong>Corda R3</strong> (v4 and v5), Kotlin, Python, Cloud SaaS.",
+  "desc_ass": "Two years dedicated to one of the <strong>largest Italian and European banks</strong> for <em>employee access management</em>: web platform, server, mobile, DevOps. I came to oversee the <strong>entire end-to-end platform</strong> of the service, which today stably handles <strong>over 300,000 daily accesses</strong> without interruption. In parallel, blockchain timestamping solutions for fashion, automotive and nautical clients.",
+  "desc_res": "Research activity on <em>Hyperledger Suite</em> and Elastic Search indexing for enterprise blockchain solutions.",
+  "desc_intek": "Development of a <strong>C# DLL library</strong> to integrate the <em>NEO</em> blockchain (formerly Antshares) with the electronic electoral systems of Cyprus. Hands-on exposure to the <em>.NET ecosystem</em> and Visual Studio in a governmental context.",
+  "desc_borsa": "Research on <em>databases and storage technologies for blockchain</em>, IPFS, distributed systems. Support for the publication of a scientific paper on distributed database types.",
+  "desc_tesi": "<em>Supporting Connected Manufacturing using Blockchain in the Automotive Domain.</em> Architecture design, development of a working prototype, integration of three <strong>Industry 4.0</strong> enabling technologies: IoT, 3D printing and blockchain. Solidity smart contracts on Ethereum, MakerBot Replicator interfaced with a Raspberry Pi.",
+  "desc_csp": "Health and environmental sustainability sectors. PHP fullstack development (SLIM micro-framework), gamification with <em>Unity 3D</em> for hospital rehabilitation projects (T.R.E.E.), IoT with MQTT.",
+  "sec_ag_eye": "Focus 2024–2026",
+  "sec_ag_kicker": "Where I have been investing time, attention and code for two years.",
+  "sec_ag_h2": "Agentic <span class=\"it\">AI</span><br><span class=\"mute\">as a daily practice.</span>",
+  "agentic_p1": "The company I'm currently working at is investing significant resources in this vertical and our team is <em>frontier</em> on the topic in Italy. We apply it <strong>every day</strong>, keeping ourselves updated on the weekly evolution of the ecosystem (Anthropic, OpenAI, MCP standard, orchestration frameworks).",
+  "agentic_p2": "This is not a side interest — it is my current craft. I build <em>multi-agent</em> systems in production, define LLM-queryable knowledge bases, design skills and tooling for autonomous agents, and integrate RAG on enterprise corpora.",
+  "cap_01_tag": "01 / Architectures",
+  "cap_01_name": "RAG on enterprise corpora",
+  "cap_01_desc": "Ingestion pipelines, chunking, hybrid retrieval (semantic + lexical), grounding, citation tracking.",
+  "cap_02_tag": "02 / Protocols",
+  "cap_02_name": "MCP server & client",
+  "cap_02_desc": "Exposing corporate tools and resources to AI agents via Model Context Protocol.",
+  "cap_03_tag": "03 / Orchestration",
+  "cap_03_name": "Autonomous agents",
+  "cap_03_desc": "Planning, execution and evaluation loops. Multi-step workflows with human-in-the-loop.",
+  "cap_04_tag": "04 / Knowledge",
+  "cap_04_name": "LLM wiki & skills",
+  "cap_04_desc": "Structured knowledge bases for agents, modular skills, versioned and testable tooling.",
+  "sec_proj_eye": "Selected projects",
+  "sec_proj_kicker": "A selection of what can be disclosed. Many projects under NDA.",
+  "sec_proj_h2": "Projects <span class=\"it\">in production</span><br>and applied <span class=\"mute\">research</span>.",
+  "proj_01_h": "Financial Instruments Digitalisation — Banking R&D Consortium",
+  "proj_01_org": "PricewaterhouseCoopers · 2022 — current",
+  "proj_01_li1": "Project at a <strong>technology innovation consortium for the banking sector</strong>, for banks and governmental institutions (NDA)",
+  "proj_01_li2": "Architectural and applicative design of the platform <strong>from scratch</strong>",
+  "proj_01_li3": "Blockchain · cybersecurity · fullstack · digitalised salary-backed loans",
+  "proj_01_li4": "Role: solution architect, stakeholder management, political liaison between parties",
+  "proj_02_h": "Notarisation Services",
+  "proj_02_org": "PricewaterhouseCoopers · 2022 — current",
+  "proj_02_li1": "Blockchain-based timestamping",
+  "proj_02_li2": "Clients in fashion, automotive and nautical",
+  "proj_02_li3": "Fullstack technology, developer and maintainer",
+  "proj_02_li4": "Long-term project, multi-tenant",
+  "proj_03_h": "Identity & Access Management — Tier 1 EU Bank",
+  "proj_03_org": "PricewaterhouseCoopers · 2019 — current",
+  "proj_03_li1": "One of the largest Italian and European banks — NDA",
+  "proj_03_li2": "Employee access management: <strong>over 300,000 accesses/day</strong> in stable production",
+  "proj_03_li3": "<strong>Fullstack</strong> platform: web, server, mobile (iOS, Android, Huawei, WP), DevOps",
+  "proj_03_li4": "End-to-end cybersecurity · operator monitoring · blockchain",
+  "proj_04_h": "Elections in Cyprus on NEO Blockchain",
+  "proj_04_org": "InteK AI · 2019",
+  "proj_04_li1": "Governmental project",
+  "proj_04_li2": "DLL library in <strong>C# / .NET</strong>",
+  "proj_04_li3": "Bridge between NEO blockchain and electronic electoral systems",
+  "proj_05_h": "T.R.E.E. — Hospital Touchwall Games",
+  "proj_05_org": "CSP · 2018",
+  "proj_05_li1": "Touchwall games for rehabilitation (Unity 3D)",
+  "proj_05_li2": "Launcher in <strong>C# / WPF</strong> with Visual Studio",
+  "proj_05_li3": "Software architecture and data exchange protocol design",
+  "proj_05_li4": "<a href=\"http://www.generascarl.it/progetto-tree.html\" target=\"_blank\">Project manifest →</a>",
+  "proj_06_h": "LAN Data Sharing Application",
+  "proj_06_org": "Politecnico di Torino · 2016 — 2017",
+  "proj_06_li1": "Client-server desktop application in <strong>C# / .NET</strong> with WPF (Visual Studio)",
+  "proj_06_li2": "Configurable TCP/UDP protocol, packet transmission optimisation",
+  "proj_06_li3": "High-performance predictive progress bars",
+  "proj_06_li4": "XML marshalling/unmarshalling, concurrency handling",
+  "proj_07_h": "Connected Manufacturing on Blockchain",
+  "proj_07_org": "Politecnico di Torino · General Motors · 2018 — 2019",
+  "proj_07_li1": "M.Sc. thesis — IoT + 3D Print + Blockchain",
+  "proj_07_li2": "Solidity smart contracts on Ethereum",
+  "proj_07_li3": "Architecture, working prototype, AS IS / TO BE analysis",
+  "proj_07_li4": "MakerBot Replicator interfaced with Raspberry Pi",
+  "proj_08_h": "Verigraph & other academic projects",
+  "proj_08_org": "Politecnico di Torino · 2016 — 2018",
+  "proj_08_li1": "Verigraph — network policy verification, JSON marshalling",
+  "proj_08_li2": "IFTTT PoliTo — client-server protocol for \"Internet Applications\" course",
+  "proj_08_li3": "ResponSEAble — fullstack PHP/Bootstrap for educational iOS/Android game",
+  "sec_stack_eye": "Stack & engineering",
+  "sec_stack_kicker": "What I use today in production and significant projects. A technical sheet, not a buzzword list.",
+  "sec_stack_h2": "<span class=\"it\">Technical</span> stack<br>and <span class=\"mute\">approach</span>.",
+  "stack_col1_eye": "LLM & AI Engineering",
+  "stack_col2_eye": "Backend · API · Data",
+  "stack_col3_eye": "Frontend · DevOps · Testing",
+  "stack_t_rag": "RAG Architecture",
+  "stack_o_rag": "Vector search, hybrid search, graph RAG",
+  "stack_t_agentic": "Agentic Systems",
+  "stack_o_agentic": "Tool use, multi-agent orchestration, planning loops",
+  "stack_t_mcp": "Model Context Protocol",
+  "stack_o_mcp": "Server, client, integrations in production",
+  "stack_t_multi": "Multi-LLM Abstraction",
+  "stack_o_multi": "LiteLLM, Rig-core, model routing",
+  "stack_t_emb": "Embedding Pipelines",
+  "stack_o_emb": "Semantic indexing, chunking, citation tracking",
+  "stack_t_api": "API Design REST/OpenAPI-first",
+  "stack_o_api": "Automatic client and schema generation",
+  "stack_t_fw": "Backend frameworks",
+  "stack_o_fw": "FastAPI, Axum (Tokio), Express, Chi/Gin",
+  "stack_t_async": "Async Task Processing",
+  "stack_o_async": "Celery, Tokio, background queues, event-driven microservices",
+  "stack_t_rel": "Relational persistence",
+  "stack_o_rel": "PostgreSQL, SQLAlchemy, query optimisation, SQLite (edge)",
+  "stack_t_spec": "Specialised persistence",
+  "stack_o_spec": "Vector DB (Qdrant), Graph DB (Neo4j), full-text (Elasticsearch), Redis",
+  "stack_t_front": "Frontend Stack",
+  "stack_o_front": "React/Next.js, TypeScript strict, Tailwind, Shadcn",
+  "stack_t_tool": "Modern tooling",
+  "stack_o_tool": "Bun runtime, monorepo (Bun + Cargo workspaces), uv, Cargo, Go modules",
+  "stack_t_dep": "Container & Deploy",
+  "stack_o_dep": "Docker/Compose, Vercel, Raspberry Pi edge deployment",
+  "stack_t_qg": "Quality Gates",
+  "stack_o_qg": "MyPy, TypeScript strict, Ruff, Clippy, ESLint, pre-commit hooks",
+  "stack_t_test": "Testing",
+  "stack_o_test": "Pytest + pytest-asyncio, Playwright E2E, Cargo test, pragmatic TDD",
+  "app_eye": "Engineering Approach",
+  "app_li1": "<strong>Performance-first</strong> with agent-readable documentation",
+  "app_li2": "<strong>Extensible architectures</strong> · plugin systems, dependency inversion, layer separation",
+  "app_li3": "<strong>Specification-driven development</strong> · OpenAPI → generated types, dual-chain pattern (sync API + async indexing)",
+  "app_li4": "<strong>Automated quality gates</strong> · linter, type checker, semantic analysis",
+  "app_li5": "<strong>Living documentation</strong> · ADR, ARCHITECTURE.md, versioned specs, Conventional Commits, Keep a Changelog, SemVer",
+  "app_li6": "<strong>Bilingual workflow</strong> · Italian/English across commits, tickets, documentation",
+  "dom_eye": "Vertical domains touched",
+  "legacy_eye": "Legacy / academic stack",
+  "dom_banking": "Banking · IAM",
+  "dom_gov": "Government",
+  "dom_aero": "Aerospace · Defense (interest)",
+  "dom_geo": "Geospatial · historical data",
+  "dom_4_0": "Industrial 4.0",
+  "sec_form_eye": "Education · Registry · Languages",
+  "sec_form_kicker": "Formal credentials, in a nutshell.",
+  "sec_form_h2": "Education, <span class=\"it\">qualifications</span><br>and <span class=\"mute\">spoken languages</span>.",
+  "form_eye_edu": "Education",
+  "form_eye_qual": "Qualifications",
+  "form_eye_lang": "Languages",
+  "edu_msc_t": "M.Sc. in Computer Engineering",
+  "edu_msc_o": "Software specialist · Politecnico di Torino",
+  "edu_msc_d": "April 2019",
+  "edu_bsc_t": "B.Sc. in Computer Engineering",
+  "edu_bsc_o": "Politecnico di Torino",
+  "edu_bsc_d": "October 2015",
+  "edu_lic_t": "High School Diploma — Scientific Lyceum",
+  "edu_lic_o": "Liceo Edoardo Amaldi · Novi Ligure",
+  "edu_lic_d": "July 2010",
+  "qual_albo_t": "Chartered Information Engineer",
+  "qual_albo_o": "Registered with the Order of Engineers of Alessandria · Section A",
+  "qual_albo_d": "April 2023",
+  "qual_ref_t": "Academic referee",
+  "qual_ref1_o": "Prof. Fabrizio Lamberti · Politecnico di Torino",
+  "qual_ref2_o": "Prof. Valentina Gatteschi · Politecnico di Torino",
+  "lang_it_n": "Italian",
+  "lang_it_s": "Native",
+  "lang_en_n": "English",
+  "lang_en_s": "Professional · B2/C1",
+  "lang_fr_n": "French",
+  "lang_fr_s": "Elementary · A2",
+  "sec_amb_eye": "Institutional activity & cultural interests",
+  "sec_amb_kicker": "What I do outside paid work, and the topics I study consistently.",
+  "sec_amb_h2": "Beyond <span class=\"it\">the code</span><br><span class=\"mute\">— commitments and interests.</span>",
+  "affil_1_eye": "Active affiliation",
+  "affil_1_since": "· since 2025",
+  "affil_1_h": "Founding member — <span class=\"it\">Aerospace Commission</span>",
+  "affil_1_org": "Order of Engineers of the Province of Alessandria",
+  "affil_1_p1": "I have been participating for about a year in an institutional initiative aimed at stimulating the <strong>conversion of the Alessandria industrial fabric</strong> from the automotive sector to <em>aerospace and Defense</em>, in response to the automotive crisis and the current geopolitical instability.",
+  "affil_1_p2": "Activities include outreach, organisation of seminars for technicians and entrepreneurs of the territory, and mapping of the skills companies need to qualify as suppliers in the aerospace sector (UNI EN 9100, REACH, sector cybersecurity, applied AI).",
+  "affil_1_event_lbl": "Upcoming event",
+  "affil_1_event": "Seminar <strong>\"On the Aerospace Route\"</strong><br>9 May 2026 · Order's premises, Alessandria",
+  "affil_2_eye": "Continuous study",
+  "affil_2_since": "· long-standing",
+  "affil_2_h": "Geopolitics, <span class=\"it\">strategic studies</span> and dual-use technology",
+  "affil_2_org": "Systematic reading · personal interest",
+  "affil_2_p1": "For several years I have devoted constant attention to <em>geopolitical scenarios</em>, international security dynamics, Defense industrial doctrines, technological competition between blocs and <em>dual-use</em> policies.",
+  "affil_2_p2": "I am particularly interested in the intersection between <strong>technology</strong> (AI, autonomous systems, critical infrastructures, governmental blockchain) and <strong>strategy</strong>: how today's technical choices shape tomorrow's equilibria, and where Italian industry can position itself.",
+  "nav_exp": "Experience",
+  "nav_ag": "Agentic",
+  "nav_proj": "Projects",
+  "nav_stack": "Stack",
+  "nav_amb": "Interests",
+  "nav_cont": "Contacts",
+  "foot_mark": "Cristiano <span class=\"it\">Cavo.</span><br><span class=\"mute\">software & agentic builder.</span>",
+  "foot_meta_1": "CV · v. April 2026",
+  "foot_meta_2": "I authorise the processing of personal data pursuant to EU Reg. 679/2016 (GDPR)",
+  "foot_meta_3": "Set in Instrument Serif · Geist · JetBrains Mono",
+  "legend_hot": "daily use · current focus",
+  "legend_default": "solid stack",
+  "legend_cool": "consolidated enterprise experience"
+};
+
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const i18nNodes = document.querySelectorAll('[data-i18n]');
+
+  // Memorizzo l'HTML italiano originale per ogni nodo (così il toggle è reversibile)
+  const originalIT = new Map();
+  i18nNodes.forEach((el) => {
+    originalIT.set(el, el.innerHTML);
+  });
+
+  function setLang(lang) {
+    if (lang === 'en') {
+      i18nNodes.forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (T_EN[key] !== undefined) {
+          el.innerHTML = T_EN[key];
+        }
+      });
+      document.documentElement.setAttribute('lang', 'en');
+    } else {
+      i18nNodes.forEach((el) => {
+        if (originalIT.has(el)) {
+          el.innerHTML = originalIT.get(el);
+        }
+      });
+      document.documentElement.setAttribute('lang', 'it');
+    }
+    langButtons.forEach((btn) => {
+      if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    try { localStorage.setItem('cvLang', lang); } catch (e) {}
+  }
+
+  langButtons.forEach((btn) => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+  });
+
+  // Carico la lingua salvata
+  let savedLang = 'it';
+  try { savedLang = localStorage.getItem('cvLang') || 'it'; } catch (e) {}
+  if (savedLang === 'en') setLang('en');
+
+</script>
+</body>
+</html>
